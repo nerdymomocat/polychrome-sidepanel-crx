@@ -1,0 +1,25 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+  "name": "Polychrome: Vertical Tab Groups & Search",
+  "short_name": "Polychrome",
+  "description": "Groupable side tabs, window management, search and more — in a svelte and speedy package.",
+  "version": "0.9.9",
+  "icons": {
+    "32": "img/tabs.png",
+    "128": "img/tabs_color.png" 
+  },
+  "incognito": "split",
+  "chrome_url_overrides": {
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidebar.html"
+  },
+  "permissions": [ "tabs", "tabGroups", "storage", "bookmarks", "history", "search", "sidePanel"],
+  "host_permissions": ["https://suggestqueries.google.com/*"],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnEme/fmSs8V0uGOZ5IuP0p+n998SuX/1ceMvv8B/MqG58QAXhgwNxw1S5+yqua1Z4GaA5s/IZVVd6NhT3ghZtp7wva4639dXjqg9vHCS3Ugr4WGXxbZR6lay6CRgKB4zJgrep9oSRcg6zxacweyYRhmB2q5/NpD/tjJOIFajkuHoG2oTrrL8c/PwbORjIVlUbO8a3H25icuRDHwsvntbtIJDTJ9B0JsD1UeXXH51EaZ+iCQU+eJXVg6zLEELJ6ZGWlAmxPtnu6A8BVwH/b44CnFKN2v6U85dlg2AsnU1NHiLpSlve1a9aWhTqagfuNMw8odhlw5CzKRoIZEslTUdBQIDAQAB",
+  "manifest_version": 3
+}
