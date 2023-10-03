@@ -7,7 +7,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   let handlers = {
     restoreGroup: restoreGroup,
     reload: reload,
-    focusSidebar: focusSidebar,
+    // focusSidebar: focusSidebar,
     'removeDuplicates': removeDuplicates
   }
 
