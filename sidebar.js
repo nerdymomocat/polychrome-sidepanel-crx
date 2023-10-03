@@ -706,20 +706,6 @@ function closeTab() {
   });
 }
 
-function popOutSidebar(id) {
-  chrome.windows.create({
-    url: chrome.runtime.getURL("sidebar.html"),
-    type: "popup",
-    width:256,
-    height:window.screen.availHeight,
-    top:0,
-    left:0
-  }, (w) => {
-    w.alwaysOnTop = true;
-    window.close();
-  });
-}
-
 function showMenu() {
 }
 
@@ -901,7 +887,6 @@ var Toolbar = function(vnode) {
           m('div.button#searchicon', m('span.material-icons','search'))
           : null,
         m(Search),
-        myWindowId ? undefined : m('div.button#popout', {onclick:popOutSidebar}, m('span.material-icons','open_in_new')),
         // groupList.length ? m('div.button',
         //   m('span.material-icons','label_outline'),
         //   m('div.sort.menu',
@@ -910,13 +895,9 @@ var Toolbar = function(vnode) {
         isSearchMode ? null : m('div.button',
           m('span.material-icons','sort'),
           m('div.sort.menu',
-          m('div.action', {title:"Align Windows",
-            onclick: arrangeWindows
-          }, "Align Windows"),
           m('hr'),
 
           m('div.action', {onclick:() => { removeDuplicates() }}, "Remove Duplicates"),
-          m('div.action', {onclick:() => { discardAllTabs() }}, "Sleep background tabs"),
           m('hr'),
 
           m('div.action', {onclick:() => { sortTabs('domain') }}, "Group by Domain"),
@@ -931,9 +912,6 @@ var Toolbar = function(vnode) {
         m('div.button', {onclick:showMenu},
           m('span.material-icons','more_vert'),
           m('div.sort.menu',
-            m('div.action', {class: autofocus, title:"(Mac only), focuses this window when the mouse enters, to reduce the need to click multiple times.",
-            onclick: () => setDefault(v({autofocus}), autofocus = !autofocus)
-            }, "Activate window on hover"),
             m('div.action', {class: autofocusResults, title:"Focus first result while typing",
             onclick: () => setDefault(v({autofocusResults}), autofocusResults = !autofocusResults)
             }, "Autofocus top search result"),
@@ -1074,7 +1052,7 @@ function clearContext() {
 function showContextMenu(e) {
   e.preventDefault();
   e.stopPropagation();
-  chrome.windows.update(myWindowId, { "focused": true })
+  //chrome.windows.update(myWindowId, { "focused": true })
   contextTarget = this;
   contextEvent = e;
 }
